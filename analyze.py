@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # Configure problems
-q = 16
+q = 32
 repeats = 10
 n_samples_range = np.linspace(1000,50,q).astype(int)
 n_features_range = np.linspace(100,2,q).astype(int)
