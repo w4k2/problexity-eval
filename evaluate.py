@@ -5,10 +5,10 @@ from time import time
 from tqdm import tqdm
 
 # Configure problems
-q = 16
+q = 32
 repeats = 10
-n_samples_range = np.linspace(1000,50,q).astype(int)
-n_features_range = np.linspace(100,2,q).astype(int)
+n_samples_range = np.linspace(50,1000,q).astype(int)
+n_features_range = np.linspace(2,100,q).astype(int)
 
 # Gather measures
 clf_measures = pb.classification.__all__
@@ -19,13 +19,13 @@ c_XX, c_yy = [[] for _ in range(q)], [[] for _ in range(q)]
 r_XX, r_yy = [[] for _ in range(q)], [[] for _ in range(q)]
 
 # Generate problems
-for s, n_samples in enumerate(n_samples_range):
-    for n, n_features in enumerate(n_features_range):
-        rX, ry = [],[]
-        cX, cy = [],[]
+for repeat in range(repeats):
+    for s, n_samples in enumerate(n_samples_range):
+        for n, n_features in enumerate(n_features_range):
+            rX, ry = [],[]
+            cX, cy = [],[]
         
         # Iterate repeats
-        for repeat in range(repeats):
             config = {
                 'n_samples': n_samples,
                 'n_informative': n_features,
@@ -58,9 +58,9 @@ r_times = np.zeros((len(reg_measures), q, q, repeats))
 # Measure times
 pbar = tqdm(total=q*q*repeats)
 
-for s, n_samples in enumerate(n_samples_range):
-    for f, n_features in enumerate(n_features_range):
-        for repeat in range(repeats):
+for repeat in range(repeats):
+    for s, n_samples in enumerate(n_samples_range):
+        for f, n_features in enumerate(n_features_range):
             # Classification evaluation
             X, y = c_XX[s][f][repeat], c_yy[s][f][repeat]
 
