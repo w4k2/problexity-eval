@@ -24,7 +24,7 @@ reg_measures = pb.regression.__all__
 clf_scale = np.linspace(0,1,len(clf_measures))
 reg_scale = np.linspace(0,1,len(reg_measures))
 
-fig, ax = plt.subplots(2,1,figsize=(15,12), sharey=True)
+fig, ax = plt.subplots(2,1,figsize=(14,15/1.618), sharey=True)
 
 for measure_idx, (measure_name, x) in enumerate(zip(clf_measures, clf_scale)):
     print(measure_name, x)
@@ -71,6 +71,7 @@ for i in range(2):
     ax[i].set_yscale('log')
     ax[i].grid(ls=":")
 
+plt.tight_layout()
 plt.savefig('foo.png')
 plt.savefig('figures/time.png')
 plt.savefig('figures/time.eps')

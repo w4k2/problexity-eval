@@ -50,11 +50,9 @@ for measure_idx, measure_name in enumerate(clf_measures):
 
     plt.colorbar(im, cax=cax)
     
-    plt.savefig('figures/clf_%s.png' % measure.__name__)
-    plt.savefig('figures/clf_%s.eps' % measure.__name__)
+    plt.savefig('figures/clf_%i.png' % measure_idx)
+    plt.savefig('figures/clf_%i.eps' % measure_idx)
     plt.savefig('foo.png')
-    
-    #exit()
     
 # Analyze regression
 for measure_idx, measure_name in enumerate(reg_measures): 
@@ -82,8 +80,6 @@ for measure_idx, measure_name in enumerate(reg_measures):
 
     plt.colorbar(im, cax=cax)
     
-    plt.savefig('figures/reg_%s.png' % measure.__name__)
-    plt.savefig('figures/reg_%s.eps' % measure.__name__)
+    plt.savefig('figures/reg_%i.png' % measure_idx)
+    plt.savefig('figures/reg_%i.eps' % measure_idx)
     plt.savefig('foo.png')
-    
-exit()
